@@ -1,0 +1,29 @@
+.comletionpage {
+  padding: 60px 55px;
+  border: 1px solid #e5e5e5;
+}
+.comletionpage__title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 35px;
+}
+.comletionpage__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+.comletionpage__text {
+  max-width: 640px;
+  font-size: 18px;
+  color: #727272;
+  font-weight: 600;
+}
+.comletionpage__btn {
+  background: none;
+  border: none;
+  color: #2156bd;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -1,0 +1,70 @@
+.login__modal {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 50;
+  transition: .3s;
+}
+.login__form {
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  padding: 43px 50px;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+}
+.login__form-block {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 140px;
+}
+.login__form-title {
+  color: #000;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 46px;
+}
+.login__form-input {
+  font-size: 18px;
+  padding: 8px 20px;
+  outline: none;
+  border: 1px solid #d3d3d3;
+  background-color: #f6f6f6;
+  color: #4b4b4b;
+}
+.login__form-input::placeholder {
+  color: #4b4b4b;
+}
+.login__form-forgot {
+  text-align: end;
+  color: #2156bd;
+}
+.login__form-btn-block {
+  display: flex;
+  flex-direction: column;
+}
+.login__form-btn {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 12px 0;
+  border: none;
+  color: #fff;
+  background: #2156bd;
+}
+.reg {
+  background: transparent;
+  color: #989898;
+}
+.open{
+  visibility: visible;
+  opacity: 1;
+}

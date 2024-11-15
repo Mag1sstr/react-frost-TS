@@ -1,0 +1,62 @@
+.personalcontactinfo {
+  width: 100%;
+}
+
+.personalcontactinfo__inner {
+  /* width: 100%; */
+  width: 770px;
+  padding: 64px 50px;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+.personalcontactinfo__title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 45px;
+}
+.personalcontactinfo__row {
+  display: flex;
+  justify-content: space-between;
+}
+.personalcontactinfo__block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+}
+.personalcontactinfo__text {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #646464;
+}
+.personalcontactinfo__input {
+  border: 1px solid #d3d3d3;
+  background: #f6f6f6;
+  padding: 8px 20px;
+  outline: none;
+  width: 100%;
+}
+.personalcontactinfo__pass {
+  text-align: end;
+  border: none;
+  background: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2156bd;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.personalcontactinfo__button {
+  text-align: end;
+}
+.personalcontactinfo__btn {
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 13px 72px;
+  background-color: #2156bd;
+  color: #fff;
+  border: none;
+}

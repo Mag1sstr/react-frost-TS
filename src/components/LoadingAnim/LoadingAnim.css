@@ -1,0 +1,96 @@
+.anim {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+}
+.yellow {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 5px solid yellow;
+  border-radius: 50%;
+  animation: yellowAnim 2s infinite;
+}
+.green {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 5px solid green;
+  border-radius: 50%;
+  animation: greenAnim 2s infinite;
+}
+.red {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 5px solid red;
+  border-radius: 50%;
+  animation: redAnim 2s infinite;
+}
+.brown {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 5px solid brown;
+  border-radius: 50%;
+  animation: brownAnim 2s infinite;
+}
+@keyframes yellowAnim {
+  0% {
+    top: 0px;
+    border: 5px solid yellow;
+  }
+  50% {
+    top: -100px;
+    border: 5px solid yellow;
+  }
+  100% {
+    top: 0px;
+    border: 5px solid orange;
+  }
+}
+@keyframes greenAnim {
+  0% {
+    left: 0px;
+    border: 5px solid green;
+  }
+  50% {
+    left: 100px;
+    border: 5px solid green;
+  }
+  100% {
+    left: 0px;
+    border: 5px solid orange;
+  }
+}
+@keyframes redAnim {
+  0% {
+    top: 0px;
+    border: 5px solid red;
+  }
+  50% {
+    top: 100px;
+    border: 5px solid red;
+  }
+  100% {
+    top: 0px;
+    border: 5px solid orange;
+  }
+}
+@keyframes brownAnim {
+  0% {
+    left: 0px;
+    border: 5px solid brown;
+  }
+  50% {
+    left: -100px;
+    border: 5px solid brown;
+  }
+  100% {
+    left: 0px;
+    border: 5px solid orange;
+  }
+}

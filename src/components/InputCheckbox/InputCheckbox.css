@@ -1,0 +1,12 @@
+.availability__item {
+    display: flex;
+    gap: 5px;
+    margin-top: 39px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+.availability__item--input {
+    width: 20px;
+    border: 2px solid #e5e5e5;
+    background: #f6f6f6;
+}

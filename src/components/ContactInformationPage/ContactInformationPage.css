@@ -1,0 +1,41 @@
+
+
+.contactinfo{
+    padding: 65px 55px;
+    border: 1px solid #E5E5E5;
+
+}
+.contactinfo__title{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.contactinfo__row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contactinfo__line{
+    content: '';
+    width: 1px;
+    height: 421px;
+    background: #D3D3D3;
+}
+.contactinfo__input-block{
+    margin-bottom: 16px;
+}
+.contactinfo__input-text{
+    color: #646464;
+    margin-bottom: 10px;
+}
+.contactinfo__input{
+    min-width: 430px;
+    outline: none;
+    border: 1px solid #D3D3D3;
+    background: #F6F6F6;
+    padding: 6px 20px;
+    font-size: 16px;
+}
+.password__opacity{
+    opacity: 0.2;
+}

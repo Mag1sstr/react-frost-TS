@@ -1,0 +1,39 @@
+/* personal__title */
+.personal {
+  color: #000;
+  margin-top: 50px;
+}
+.personal__title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+.personal__row {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+.order__linkrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.my__order {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 64px 42px;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+}
+.my__order-link {
+  color: #2156bd;
+  font-size: 20px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.my__order-img {
+  stroke: #2156bd;
+}

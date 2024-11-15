@@ -1,0 +1,71 @@
+.register__modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+.register__form {
+  color: #000;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  padding: 43px 50px;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
+}
+.register__form-block {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 47px;
+}
+.register__form-title {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 46px;
+}
+.register__form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+.register__form-input {
+  width: 100%;
+  font-size: 18px;
+  padding: 8px 20px;
+  outline: none;
+  border: 1px solid #d3d3d3;
+  background-color: #f6f6f6;
+  color: #4b4b4b;
+}
+.register__form-input::placeholder {
+  color: #4b4b4b;
+}
+.register__form-btn-block {
+  display: flex;
+  flex-direction: column;
+}
+.register__form-btn {
+  padding: 11px 0;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: #2156bd;
+}
+.login {
+  background: transparent;
+  color: #989898;
+}
+.open{
+  visibility: visible;
+  opacity: 1;
+}
