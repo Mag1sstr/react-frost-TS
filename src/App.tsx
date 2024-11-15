@@ -1,17 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
-import ProductPage from "./components/ProductPage";
+import ProductPage from "./components/ProductPage/ProductPage";
 import BuyInfo from "./components/BuyInfo/BuyInfo";
 import BasketPage from "./components/BasketPage/BasketPage";
 import Personal from "./components/Personal/Personal";
 import { useDispatch } from "react-redux";
 import { getUser } from "./store/authSlice";
+import { AppDispatch } from "./store/store";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   dispatch(getUser());
-  console.log("hi");
+  // console.log("hi");
 
   return (
     <>
