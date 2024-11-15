@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios, { all } from "axios";
 import { useSelector } from "react-redux";
+import { AppDispatch } from "./store";
 const initialState = {
   brandData: [],
   modelsData: [],
@@ -36,8 +37,8 @@ export const filterSlice = createSlice({
   },
 });
 
-export function getBrandChange(id) {
-  return function (dispatch) {
+export function getBrandChange(id: number | string) {
+  return function (dispatch: AppDispatch) {
     if (id == "all") {
       dispatch(setModelsData([]));
       dispatch(setGenerationData([]));
@@ -53,8 +54,8 @@ export function getBrandChange(id) {
     }
   };
 }
-export function getModelChange(id) {
-  return function (dispatch) {
+export function getModelChange(id: number | string) {
+  return function (dispatch: AppDispatch) {
     if (id == "all") {
       dispatch(setGenerationData([]));
     } else {
@@ -67,14 +68,14 @@ export function getModelChange(id) {
     }
   };
 }
-export function getGenerationChange(id) {
-  return function (dispatch) {
-    props.getGenerationId(generationId);
-  };
-}
+// export function getGenerationChange(id) {
+//   return function (dispatch) {
+//     props.getGenerationId(generationId);
+//   };
+// }
 
 export function getBrandData() {
-  return function (dispatch) {
+  return function (dispatch: AppDispatch) {
     const apiUrl = "https://frost.runtime.kz/api/brands";
     axios.get(apiUrl).then((resp) => {
       const data = resp.data;

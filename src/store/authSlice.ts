@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "@reduxjs/toolkit/query";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { AppDispatch } from "./store";
 
 const initialState = {
   user: null,
@@ -26,8 +28,8 @@ export const authSlice = createSlice({
   },
 });
 
-export function signIn(username, password) {
-  return function (dispatch) {
+export function signIn(username: string, password: string) {
+  return function (dispatch: AppDispatch) {
     // dispatch(setTokenInfo())
 
     axios
@@ -45,8 +47,8 @@ export function signIn(username, password) {
   };
 }
 export function getUser() {
-  return function (dispatch) {
-    const token = useSelector((state) => state.auth.tokenInfo);
+  return function (dispatch: AppDispatch) {
+    const token = useSelector((state: RootState) => state.auth.tokenInfo);
     if (token) {
       axios.defaults.headers.common["Authorization"] = "Bearer " + token;
       axios
