@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 // import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
 import { useSelector } from "react-redux";
 import LoadingAnim from "../LoadingAnim/LoadingAnim";
+import { RootState } from "../../store/store";
 
 export default function BuyInfo() {
   interface IBuyinfoData {
@@ -32,8 +33,9 @@ export default function BuyInfo() {
       name: string;
     };
   }
+
   const [buyinfoData, setBuyinfoData] = useState<IBuyinfoData | null>(null);
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState<IReviews[]>([]);
 
   const [cardImages, setCardImages] = useState([
     BuyInfoImage1,
@@ -43,7 +45,7 @@ export default function BuyInfo() {
   ]);
   const [mainCardImage, setMainCardImage] = useState(0);
 
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   const params = useParams();
 
@@ -86,6 +88,14 @@ export default function BuyInfo() {
       lastName: string;
     };
   }
+
+  console.log(reviews);
+  interface ResponseApi {
+    data: {
+      review: string;
+    };
+  }
+
   return (
     <section className="buyinfo">
       <div className="conteiner">
@@ -136,7 +146,9 @@ export default function BuyInfo() {
                 </p>
               </div>
               <div className="description__card">
-                <p className="card__price">{buyinfoData.price} тг</p>
+                <p className="description__card-price">
+                  {buyinfoData.price} тг
+                </p>
                 <p className="description__card-text">
                   {buyinfoData.available == 1 ? (
                     <img src={PointImage} alt="" />
@@ -164,18 +176,21 @@ export default function BuyInfo() {
                         className="auth__reviews-input"
                         value={textValue}
                         onChange={(e) => setTextValue(e.target.value)}
-                        type="text"
+                        // type="text"
                         placeholder="Поделитесь своими впечатлениями о товаре."
                       ></textarea>
                       <button
                         onClick={() => {
                           axios
-                            .post("https://frost.runtime.kz/api/reviews", {
-                              product_id: params.id,
-                              review: textValue,
-                            })
+                            .post<IReviews>(
+                              "https://frost.runtime.kz/api/reviews",
+                              {
+                                product_id: params.id,
+                                review: textValue,
+                              }
+                            )
                             .then((resp) => {
-                              console.log(resp);
+                              console.log(resp.data);
 
                               let copyReviews = [...reviews];
                               copyReviews.unshift(resp.data);
