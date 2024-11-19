@@ -9,9 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import LoginForm from "../LoginForm/LoginForm";
 import { deleteUser } from "../../store/authSlice";
+import { RootState } from "../../store/store";
 
 export default function Header() {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state:RootState) => state.auth.user);
   const dispatch = useDispatch();
 
   const [clickLoginModal, setClickLoginModal] = useState(false);
