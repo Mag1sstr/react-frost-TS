@@ -43,7 +43,12 @@ export default function Basket(props: IProps) {
       name: string;
       price: number;
       code: string;
+      id: number;
     };
+  }
+
+  interface ICount {
+    count: number;
   }
   return (
     <>
@@ -82,7 +87,7 @@ export default function Basket(props: IProps) {
                     <div className="kol">
                       <button
                         onClick={() => {
-                          let minusCount: [] = [...basketPageData];
+                          let minusCount: ICount[] = [...basketPageData];
                           if (minusCount[index].count <= 1) {
                             null;
                           } else {
@@ -106,7 +111,7 @@ export default function Basket(props: IProps) {
                       <p className="kol__numbers">{el.count}</p>
                       <button
                         onClick={() => {
-                          let plusCount: [] = [...basketPageData];
+                          let plusCount: ICount[] = [...basketPageData];
                           plusCount[index].count += 1;
                           setBasketPageData(plusCount);
                           setSum((sum += el.product.price));
@@ -136,14 +141,16 @@ export default function Basket(props: IProps) {
                       );
 
                       let copyData = [...basketPageData];
-                      let filteredData = copyData.filter((item) => {
-                        return item.product.id !== el.product.id;
-                      });
+                      let filteredData = copyData.filter(
+                        (item: { product: { id: number } }) => {
+                          return item.product.id !== el.product.id;
+                        }
+                      );
                       setBasketPageData(filteredData);
 
                       setSum((sum -= el.product.price * el.count));
                     }}
-                    href="#!"
+                    // href="#!"
                     className="delete__link"
                   >
                     Удалить из корзины

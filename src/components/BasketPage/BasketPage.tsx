@@ -1,35 +1,37 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "./BasketPage.css";
-import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
 import Basket from "../Basket/Basket";
 import ContactInformationPage from "../ContactInformationPage/ContactInformationPage";
 import DeliveryPage from "../DeliveryPage/DeliveryPage";
 import CompletionPage from "../CompletionPage/CompletionPage";
 import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
+export interface IUser {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+}
+// interface IInputValue {
+//   name: string;
+//   surname: string;
+//   patronymic: string;
+//   tel: string;
+//   email: string;
+// }
+export interface IDeliveryValue {
+  region: string;
+  city: string;
+  street: string;
+  house: string;
+  apartment: string;
+}
 export default function BasketPage() {
   let [mainStage, setMainStage] = useState(0);
   let [currentStage, setCurrentStage] = useState(1);
 
-  interface IUser {
-    user: {
-      firstName: string;
-      lastName: string;
-      email: string;
-    };
-  }
-  const user: IUser = useSelector((state) => state.auth.user);
-  // interface IInputValue {
-  //   // name: string;
-  //   // surname: string;
-  //   // patronymic: string;
-  //   // tel: string;
-  //   // email: string;
-  //   // user: {};
-  //   // user: {
-  //   //   user: unknown;
-  //   // };
-  // }
+  const user: IUser | null = useSelector((state: RootState) => state.auth.user);
+
   let [inputValue, setInputValue] = useState({
     name: user ? user.firstName : "",
     surname: user ? user.lastName : "",

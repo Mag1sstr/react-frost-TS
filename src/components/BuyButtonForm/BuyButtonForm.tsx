@@ -1,16 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import "./BuyButtonForm.css";
 import axios from "axios";
-import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
+// import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
 import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+// import { RootState } from "@reduxjs/toolkit/query";
 
-export default function BuyButtonForm(props) {
+interface IProps {
+  clickCardText: string;
+  style: string | null;
+  setClickBuyBtn: (bool: boolean) => void;
+  available: number;
+  id: number;
+}
+export default function BuyButtonForm(props: IProps) {
   let [count, setCount] = useState(1);
   const [availableError, setAvailableError] = useState(false);
   const [userError, setUserError] = useState(false);
 
   // const user = useContext(AuthContext)
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   return (
     <div
