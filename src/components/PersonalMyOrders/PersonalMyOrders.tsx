@@ -10,6 +10,23 @@ export default function PersonalMyOrders() {
       setOrdersData(resp.data);
     });
   }, []);
+
+  interface IOrdersItems {
+    count: number;
+    product: {
+      price: number;
+      name: string;
+    };
+  }
+  interface IOrdersData {
+    items: IOrdersItems[];
+    product: {
+      price: number;
+      count: number;
+    };
+    id: number;
+    created_at: number;
+  }
   return (
     <div className="history">
       <h3 className="history__title">История заказов</h3>
@@ -23,7 +40,7 @@ export default function PersonalMyOrders() {
           <p>Стоимость</p>
         </div>
       </div>
-      {ordersData.map((el) => {
+      {ordersData.map((el: IOrdersData) => {
         let sumPrice = 0;
         for (let i of el.items) {
           sumPrice += i.product.price * i.count;
