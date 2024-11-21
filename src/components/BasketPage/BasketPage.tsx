@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./BasketPage.css";
 import Basket from "../Basket/Basket";
 import ContactInformationPage from "../ContactInformationPage/ContactInformationPage";
@@ -31,6 +31,7 @@ export default function BasketPage() {
   let [currentStage, setCurrentStage] = useState(1);
 
   const user: IUser | null = useSelector((state: RootState) => state.auth.user);
+  // console.log("gi");
 
   let [inputValue, setInputValue] = useState({
     name: user ? user.firstName : "",

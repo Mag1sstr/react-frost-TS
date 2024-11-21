@@ -12,7 +12,6 @@ import { AppDispatch } from "./store/store";
 function App() {
   const dispatch: AppDispatch = useDispatch();
   dispatch(getUser());
-  // console.log("hi");
 
   return (
     <>

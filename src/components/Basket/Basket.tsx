@@ -19,7 +19,7 @@ export default function Basket(props: IProps) {
   // сохранить токен в localStorage и оттуда его использовать
   useEffect(() => {
     axios.get("https://frost.runtime.kz/api/cart").then((resp) => {
-      console.log(resp);
+      // console.log(resp);
 
       setBasketPageData(resp.data.items);
       let sumPrice = 0;
