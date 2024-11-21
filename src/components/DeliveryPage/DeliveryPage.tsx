@@ -1,17 +1,23 @@
 import { useContext, useState } from "react";
 import "./DeliveryPage.css";
 import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
+import { IDeliveryValue } from "../BasketPage/BasketPage";
 
-export default function DeliveryPage(props) {
-  // let [inputValue, setInputValue] = useState(
-  //   {
-  //     region:'',
-  //     city:'',
-  //     street:'',
-  //     house:'',
-  //     apartment:'',
-  //   }
-  // )
+interface IProps {
+  inputDeliveryValue: IDeliveryValue;
+
+  house: string;
+  street: string;
+  city: string;
+  tel: string;
+  area: string;
+  apartment: string;
+
+  setMainStage: (number: number) => void;
+  setCurrentStage: (number: number) => void;
+  setInputDeliveryValue: (obj: IDeliveryValue) => void;
+}
+export default function DeliveryPage(props: IProps) {
   const [error, setError] = useState(false);
   const newOrder = useContext(AuthContext);
   return (
