@@ -8,6 +8,7 @@ import {
 } from "../../store/filterSlice";
 import InputCheckbox from "../InputCheckbox/InputCheckbox";
 import DropdownCategory from "../DropdownCategory/DropdownCategory";
+import { AppDispatch, RootState } from "../../store/store";
 
 interface IProps {
   getInputValue: (value: number) => void;
@@ -17,10 +18,12 @@ interface IProps {
   setCurrentPage: (number: number) => void;
 }
 export default function CategorySection(props: IProps) {
-  const dispatch = useDispatch();
-  const brandData = useSelector((state) => state.filter.brandData);
-  const modelsData = useSelector((state) => state.filter.modelsData);
-  const generationsData = useSelector((state) => state.filter.generationsData);
+  const dispatch: AppDispatch = useDispatch();
+  const brandData = useSelector((state: RootState) => state.filter.brandData);
+  const modelsData = useSelector((state: RootState) => state.filter.modelsData);
+  const generationsData = useSelector(
+    (state: RootState) => state.filter.generationsData
+  );
 
   useEffect(() => {
     dispatch(getBrandData());
@@ -47,6 +50,7 @@ export default function CategorySection(props: IProps) {
                 onChange={function (brandId: number | string) {
                   dispatch(getBrandChange(brandId));
                   props.getBrandId(brandId);
+                  props.setCurrentPage(1);
                 }}
               />
             </div>
@@ -58,6 +62,7 @@ export default function CategorySection(props: IProps) {
                 onChange={function (modelId: number | string) {
                   dispatch(getModelChange(modelId));
                   props.getModelId(modelId);
+                  props.setCurrentPage(1);
                 }}
               />
             </div>
@@ -68,6 +73,7 @@ export default function CategorySection(props: IProps) {
                 items={generationsData}
                 onChange={function (generationId: number | string) {
                   props.getGenerationId(generationId);
+                  props.setCurrentPage(1);
                 }}
               />
             </div>

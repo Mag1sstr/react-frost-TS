@@ -3,6 +3,10 @@ import check from "./../../images/check.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
 import { NavLink } from "react-router-dom";
+
+interface IContext {
+  orderNumber: number;
+}
 export default function CompletionPage() {
   const orderNumber = useContext(AuthContext);
   return (

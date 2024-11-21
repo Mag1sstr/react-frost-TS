@@ -1,17 +1,33 @@
-import { useContext, useState } from "react";
-import { isValidPhoneNumber, parsePhoneNumber } from "libphonenumber-js";
+import { useState } from "react";
+import {
+  isValidPhoneNumber,
+  parsePhoneNumberWithError,
+} from "libphonenumber-js";
 import "./ContactInformationPage.css";
-import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
+// import { IUser } from "../BasketPage/BasketPage";
+// import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
 
-export default function ContactInformationPage(props) {
+interface IProps {
+  inputValue: {
+    surname: string;
+    name: string;
+    patronymic: string;
+    tel: string;
+    email: string;
+  };
+  setInputValue: ({}) => void;
+  setMainStage: (number: number) => void;
+  setCurrentStage: (number: number) => void;
+}
+export default function ContactInformationPage(props: IProps) {
   const [error, setError] = useState(false);
   const [emailError, setEmailError] = useState("");
   const re =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-  const convertPhoneNumber = (inp) => {
+  const convertPhoneNumber = (inp: string) => {
     if (isValidPhoneNumber(inp, "RU")) {
-      const phoneNumber = parsePhoneNumber(inp, "RU");
+      const phoneNumber = parsePhoneNumberWithError(inp, "RU");
       return phoneNumber.formatNational();
     }
     return inp;
@@ -79,7 +95,7 @@ export default function ContactInformationPage(props) {
                   <input
                     value={props.inputValue.tel}
                     onChange={(e) => {
-                      if (e.target.value == Number(e.target.value)) {
+                      if (Number(e.target.value) == Number(e.target.value)) {
                         props.setInputValue({
                           ...props.inputValue,
                           tel: convertPhoneNumber(e.target.value),
