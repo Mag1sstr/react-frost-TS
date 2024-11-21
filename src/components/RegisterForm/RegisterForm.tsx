@@ -1,7 +1,12 @@
 import axios from "axios";
 import "./RegisterForm.css";
 import { useState } from "react";
-export default function RegisterForm(props) {
+
+interface IProps {
+  style: string | null;
+  getClickRegModal: (bool: boolean) => void;
+}
+export default function RegisterForm(props: IProps) {
   let [registerValue, setRegisterValue] = useState({
     first_name: "",
     last_name: "",
@@ -20,8 +25,7 @@ export default function RegisterForm(props) {
   const re =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-
-    // console.log(formErrors);
+  // console.log(formErrors);
 
   return (
     <div
@@ -36,10 +40,12 @@ export default function RegisterForm(props) {
           {error ? (
             <div style={{ color: "red" }}>Заполните все поля</div>
           ) : null}
-          {formErrors.first_name ? <div style={{ color: "red" }}>{formErrors.first_name}</div> : null}
+          {/* {formErrors.first_name ? (
+            <div style={{ color: "red" }}>{formErrors.first_name}</div>
+          ) : null}
           {formErrors.last_name ? (
             <div style={{ color: "red" }}>{formErrors.last_name}</div>
-          ) : null}
+          ) : null} */}
           <div className="register__form-row">
             <input
               value={registerValue.first_name}
@@ -67,8 +73,10 @@ export default function RegisterForm(props) {
               placeholder="Фамилия"
             />
           </div>
-          
-          {formErrors.email ? <div style={{ color: "red" }}>{formErrors.email}</div> : null}
+
+          {/* {formErrors.email ? (
+            <div style={{ color: "red" }}>{formErrors.email}</div>
+          ) : null} */}
           <input
             value={registerValue.email}
             onChange={(e) => {
@@ -87,7 +95,9 @@ export default function RegisterForm(props) {
             <div style={{ color: "red" }}>Повторите пароль</div>
           ) : null}
 
-          {formErrors.password ? <div style={{ color: "red" }}>{formErrors.password}</div> : null}
+          {/* {formErrors.password ? (
+            <div style={{ color: "red" }}>{formErrors.password}</div>
+          ) : null} */}
 
           <input
             value={registerValue.password}
@@ -142,7 +152,6 @@ export default function RegisterForm(props) {
                     setFormErrors(errors);
 
                     // console.log(errors);
-                    
 
                     // setEmailError(errors.email);
                     // setNameError(errors.first_name);

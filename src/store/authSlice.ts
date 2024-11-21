@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "@reduxjs/toolkit/query";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { AppDispatch } from "./store";
+import { AppDispatch, RootState } from "./store";
+import { IUser } from "../components/BasketPage/BasketPage";
 
-const initialState = {
+interface authState {
+  user: null | IUser;
+  tokenInfo: string | null;
+}
+
+const initialState: authState = {
   user: null,
   tokenInfo: localStorage.getItem("token"),
 };
@@ -15,7 +20,6 @@ export const authSlice = createSlice({
   reducers: {
     getTokenInfo(state, action) {
       state.tokenInfo = action.payload;
-      // console.log(state.tokenInfo);
     },
     setUser(state, action) {
       if (state.tokenInfo) {

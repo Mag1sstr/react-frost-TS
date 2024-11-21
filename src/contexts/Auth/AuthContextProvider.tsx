@@ -1,9 +1,26 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-// import A from "./A"
+
+// type StateContextType = {
+//   orderNumber: {
+//     orderNumber: number | null;
+//   };
+//   newOrder: (
+//     phone: string,
+//     area: string,
+//     city: string,
+//     street: string,
+//     house: string,
+//     apartment: string
+//   ) => void;
+// };
 
 export const AuthContext = createContext();
-export default function AuthContextProvider({ children }) {
+
+interface IChildren {
+  children: React.ReactNode;
+}
+export default function AuthContextProvider({ children }: IChildren) {
   //   const [tokenInfo, setTokenInfo] = useState(localStorage.getItem("token"));
   //   const [user, setUser] = useState(null);
 
@@ -35,7 +52,14 @@ export default function AuthContextProvider({ children }) {
   //          // setRequestError(!requestError)
   //       })
   // }
-  function newOrder(phone, area, city, street, house, apartment) {
+  function newOrder(
+    phone: string,
+    area: string,
+    city: string,
+    street: string,
+    house: string,
+    apartment: string
+  ) {
     axios
       .post("https://frost.runtime.kz/api/orders", {
         phone,
@@ -59,7 +83,7 @@ export default function AuthContextProvider({ children }) {
         //   user: user,
         //   setUser: setUser,
         //   signIn: signIn,
-        signOut: null,
+        // signOut: null,
         //   token: tokenInfo,
         //   setTokenInfo: setTokenInfo,
         newOrder: newOrder,
