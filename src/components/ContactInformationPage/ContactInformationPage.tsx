@@ -4,18 +4,13 @@ import {
   parsePhoneNumberWithError,
 } from "libphonenumber-js";
 import "./ContactInformationPage.css";
+import { IInputValue } from "../BasketPage/BasketPage";
 // import { IUser } from "../BasketPage/BasketPage";
 // import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
 
 interface IProps {
-  inputValue: {
-    surname: string;
-    name: string;
-    patronymic: string;
-    tel: string;
-    email: string;
-  };
-  setInputValue: ({}) => void;
+  inputValue: IInputValue;
+  setInputValue: (value: IInputValue) => void;
   setMainStage: (number: number) => void;
   setCurrentStage: (number: number) => void;
 }
