@@ -128,7 +128,7 @@ export default function DeliveryPage(props: IProps) {
                   props.setMainStage(3);
                   props.setCurrentStage(4);
 
-                  newOrder.newOrder(
+                  newOrder?.newOrder(
                     props.tel,
                     props.area,
                     props.city,
