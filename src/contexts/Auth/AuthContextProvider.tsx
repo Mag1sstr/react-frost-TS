@@ -14,8 +14,19 @@ import axios from "axios";
 //     apartment: string
 //   ) => void;
 // };
+interface IAuthContext {
+  newOrder: (
+    phone: string,
+    area: string,
+    city: string,
+    street: string,
+    house: string,
+    apartment: string
+  ) => void;
+  orderNumber: number | null;
+}
 
-export const AuthContext = createContext();
+export const AuthContext = createContext<IAuthContext | null>(null);
 
 interface IChildren {
   children: React.ReactNode;
