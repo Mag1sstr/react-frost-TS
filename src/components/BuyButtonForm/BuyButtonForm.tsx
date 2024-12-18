@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import "./BuyButtonForm.css";
 import axios from "axios";
 // import { AuthContext } from "../../contexts/Auth/AuthContextProvider";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-// import { RootState } from "@reduxjs/toolkit/query";
+// import { messageToast } from "../ProductPage/ProductPage"
+import { toast } from "react-toastify";
 
 interface IProps {
   clickCardText: string;
@@ -21,6 +22,14 @@ export default function BuyButtonForm(props: IProps) {
   // const user = useContext(AuthContext)
   const user = useSelector((state: RootState) => state.auth.user);
 
+  document.onkeydown = (e) => {
+    if (e.key == "ArrowLeft") {
+      count <= 1 ? null : setCount((count -= 1));
+    }
+    if (e.key == "ArrowRight") {
+      setCount((count += 1));
+    }
+  };
   return (
     <div
       onClick={() => {
@@ -75,7 +84,10 @@ export default function BuyButtonForm(props: IProps) {
                   .then((resp) => {
                     console.log(resp);
                   });
+
                 props.setClickBuyBtn(false);
+
+                toast.success("Добавлено в корзину");
               } else {
                 setAvailableError(!availableError);
               }
@@ -84,7 +96,10 @@ export default function BuyButtonForm(props: IProps) {
           >
             Оформить заказ
           </button>
-          <button className="addBasket__column-btn addBasket__column-btn-continue">
+          <button
+            onClick={() => props.setClickBuyBtn(false)}
+            className="addBasket__column-btn addBasket__column-btn-continue"
+          >
             Продолжить выбор товаров
           </button>
         </div>

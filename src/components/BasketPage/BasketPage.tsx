@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import "./BasketPage.css"
 import Basket from "../Basket/Basket"
 import ContactInformationPage from "../ContactInformationPage/ContactInformationPage"
@@ -13,11 +13,11 @@ export interface IUser {
    email?: string
 }
 export interface IInputValue {
-   name: string
-   surname: string
+   name?: string
+   surname?: string
    patronymic: string
    tel: string
-   email: string
+   email?: string
 }
 export interface IDeliveryValue {
    region: string
@@ -33,13 +33,24 @@ export default function BasketPage() {
    const user: IUser | null = useSelector((state: RootState) => state.auth.user)
    // console.log("gi");
 
-   let [inputValue, setInputValue] = useState({
+   // let [inputValue, setInputValue] = useState({
+   //    name: user ? user.firstName : "",
+   //    surname: user ? user.lastName : "",
+   //    patronymic: "",
+   //    tel: "",
+   //    email: user ? user.email : "",
+   // })
+
+   let [inputValue, setInputValue] = useState<IInputValue>({
       name: user ? user.firstName : "",
       surname: user ? user.lastName : "",
       patronymic: "",
       tel: "",
       email: user ? user.email : "",
    })
+
+   // console.log(inputValue)
+
    let [inputDeliveryValue, setInputDeliveryValue] = useState({
       region: "",
       city: "",
@@ -66,13 +77,7 @@ export default function BasketPage() {
                setMainStage={setMainStage}
                setCurrentStage={setCurrentStage}
                setInputValue={setInputValue}
-               inputValue={{
-                  name: "",
-                  surname: "",
-                  patronymic: "",
-                  tel: "",
-                  email: "",
-               }}
+               inputValue={inputValue}
             />
          ),
       },

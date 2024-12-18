@@ -11,8 +11,14 @@
 .product__row {
   display: flex;
   justify-content: space-between;
-  gap: 30px;
+  gap: 45px;
   flex-wrap: wrap;
   color: #000;
   margin-bottom: 30px;
+}
+
+.product__row:after {
+  content: "";
+  flex: auto;
+  justify-content: flex-start;
 }

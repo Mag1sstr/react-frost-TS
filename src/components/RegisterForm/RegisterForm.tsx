@@ -1,6 +1,7 @@
 import axios from "axios";
 import "./RegisterForm.css";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 interface IProps {
   style: string | null;
@@ -34,6 +35,7 @@ export default function RegisterForm(props: IProps) {
       }}
       className={`register__modal ${props.style}`}
     >
+      {/* <ToastContainer /> */}
       <div onClick={(e) => e.stopPropagation()} className="register__form">
         <p className="register__form-title">Создание учётной записи</p>
         <div className="register__form-block">
@@ -80,7 +82,10 @@ export default function RegisterForm(props: IProps) {
           <input
             value={registerValue.email}
             onChange={(e) => {
-              setRegisterValue({ ...registerValue, email: e.target.value });
+              setRegisterValue({
+                ...registerValue,
+                email: e.target.value,
+              });
               // if (!re.test(String(e.target.value).toLowerCase())) {
               //   setEmailError("Некорректный email");
               // } else {
@@ -102,7 +107,10 @@ export default function RegisterForm(props: IProps) {
           <input
             value={registerValue.password}
             onChange={(e) => {
-              setRegisterValue({ ...registerValue, password: e.target.value });
+              setRegisterValue({
+                ...registerValue,
+                password: e.target.value,
+              });
             }}
             type="text"
             className="register__form-input"
@@ -134,6 +142,7 @@ export default function RegisterForm(props: IProps) {
                 registerValue.password.length == 0 &&
                 registerValue.repeat_password.length == 0
               ) {
+                toast.error("Неверные данные");
                 setError(!error);
               } else {
                 axios
@@ -158,6 +167,10 @@ export default function RegisterForm(props: IProps) {
                     // setLastNameError(errors.last_name);
                     // setPassError(errors.password);
                   });
+                toast.success("Вы успешно зарегистрировались");
+                setTimeout(() => {
+                  props.getClickRegModal(false);
+                }, 1500);
               }
             }}
             className="register__form-btn"

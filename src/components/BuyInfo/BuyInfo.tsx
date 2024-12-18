@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoadingAnim from "../LoadingAnim/LoadingAnim";
 import { RootState } from "../../store/store";
+import BuyButtonForm from "../BuyButtonForm/BuyButtonForm";
 
 export default function BuyInfo() {
   interface IBuyinfoData {
@@ -23,6 +24,7 @@ export default function BuyInfo() {
     code: string;
     manufacturer: string;
     price: string;
+    id: number;
     brand: {
       name: string;
     };
@@ -36,6 +38,8 @@ export default function BuyInfo() {
 
   const [buyinfoData, setBuyinfoData] = useState<IBuyinfoData | null>(null);
   const [reviews, setReviews] = useState<IReviews[]>([]);
+
+  const [clickBuyBtn, setClickBuyBtn] = useState(false);
 
   const [cardImages, setCardImages] = useState([
     BuyInfoImage1,
@@ -159,7 +163,21 @@ export default function BuyInfo() {
                 </p>
                 <p className="city">г. Нур-Султан</p>
                 <p className="city">г. Алматы</p>
-                <button className="description__card-btn">Купить</button>
+                <button
+                  onClick={() => {
+                    setClickBuyBtn(!clickBuyBtn);
+                  }}
+                  className="description__card-btn"
+                >
+                  Купить
+                </button>
+                <BuyButtonForm
+                  style={clickBuyBtn ? "open" : null}
+                  setClickBuyBtn={setClickBuyBtn}
+                  clickCardText={buyinfoData.name}
+                  id={buyinfoData.id}
+                  available={buyinfoData.available}
+                />
               </div>
             </div>
 
