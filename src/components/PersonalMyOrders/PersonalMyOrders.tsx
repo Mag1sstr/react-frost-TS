@@ -40,30 +40,32 @@ export default function PersonalMyOrders() {
           <p>Стоимость</p>
         </div>
       </div>
-      {ordersData.map((el: IOrdersData) => {
-        let sumPrice = 0;
-        for (let i of el.items) {
-          sumPrice += i.product.price * i.count;
-        }
-        return (
-          <div key={el.id} className="history__product-row">
-            <p className="history__product-number">№{el.id}</p>
-            <div className="history__product-column">
-              {el.items.map((item) => {
-                return (
-                  <p className="history__product-text">{item.product.name}</p>
-                );
-              })}
-            </div>
+      <div className="history__product-wrapper">
+        {ordersData.map((el: IOrdersData) => {
+          let sumPrice = 0;
+          for (let i of el.items) {
+            sumPrice += i.product.price * i.count;
+          }
+          return (
+            <div key={el.id} className="history__product-row">
+              <p className="history__product-number">№{el.id}</p>
+              <div className="history__product-column">
+                {el.items.map((item) => {
+                  return (
+                    <p className="history__product-text">{item.product.name}</p>
+                  );
+                })}
+              </div>
 
-            <p>{new Date(el.created_at).toLocaleString()}</p>
+              <p>{new Date(el.created_at).toLocaleString()}</p>
 
-            <div key={el.id} className="history__product-column">
-              {sumPrice}
+              <div key={el.id} className="history__product-column">
+                {sumPrice}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
