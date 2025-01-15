@@ -10,10 +10,13 @@ import { getUser } from "./store/authSlice";
 import { AppDispatch } from "./store/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getBasketPageData } from "./store/basketSlice";
 
 function App() {
   const dispatch: AppDispatch = useDispatch();
   dispatch(getUser());
+
+  // dispatch(getBasketPageData());
 
   return (
     <>

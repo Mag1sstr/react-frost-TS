@@ -56,3 +56,15 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.history__product-wrapper {
+  height: 340px;
+  overflow-y: auto;
+}
+.history__product-wrapper::-webkit-scrollbar {
+  width: 10px !important;
+}
+.history__product-wrapper::-webkit-scrollbar-thumb {
+  background: #d3d3d3 !important;
+  border-radius: 10px;
+}
