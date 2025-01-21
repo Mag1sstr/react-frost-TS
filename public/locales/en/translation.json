@@ -22,5 +22,16 @@
   "completion": "Completion",
   "product_name": "Product name",
   "quantity": "Quantity",
-  "price": "Price"
+  "price": "Price",
+  "article": "Article",
+  "delete": "Delete",
+  "payment_method": "Payment method",
+  "total_price": "Total price",
+  "checkout_btn": "Place an order",
+  "contact_info": "Contact information",
+  "surname": "Surname",
+  "name": "Name",
+  "patronymic": "Patronymic",
+  "telephone": "Telephone",
+  "confirm_btn": "Confirm"
 }
