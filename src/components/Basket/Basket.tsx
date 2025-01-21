@@ -1,5 +1,5 @@
 import "./Basket.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import LoadingAnim from "../LoadingAnim/LoadingAnim";
 import NoProductPage from "../NoProductPage/NoProductPage";
@@ -44,13 +44,18 @@ export default function Basket(props: IProps) {
   //   }, []);
   const dispatch: AppDispatch = useDispatch();
   let { basketPageData, sum } = useSelector((state: RootState) => state.basket);
+  const user = useSelector((state: RootState) => state.auth.user);
   useEffect(() => {
     dispatch(getBasketPageData());
   }, []);
 
-  if (basketPageData == null) {
+  if (!user) {
+    return <NoProductPage />;
+  }
+
+  if (!basketPageData) {
     return <LoadingAnim />;
-  } else if (basketPageData.length == 0) {
+  } else if (!basketPageData.length) {
     return <NoProductPage />;
   }
 
@@ -149,7 +154,9 @@ export default function Basket(props: IProps) {
                     </div>
                   </div>
                   <div className="delete">
-                    <p className="delete__text">Артикул: {el.product.code}</p>
+                    <p className="delete__text">
+                      {t("article")}: {el.product.code}
+                    </p>
                     <button
                       onClick={() => {
                         axios.get(
@@ -169,7 +176,7 @@ export default function Basket(props: IProps) {
                       // href="#!"
                       className="delete__link"
                     >
-                      Удалить из корзины
+                      {t("delete")}
                     </button>
                   </div>
                 </div>
@@ -178,13 +185,13 @@ export default function Basket(props: IProps) {
           </div>
           <div className="payment">
             <div className="payment__select">
-              <p className="payment__text">Способ оплаты</p>
+              <p className="payment__text">{t("payment_method")}</p>
               <select className="payment__sel">
                 <option>Оплата при получении</option>
               </select>
             </div>
             <div className="payment__price">
-              <p>Итого к оплате:</p>
+              <p>{t("total_price")}:</p>
               <p>{sum} тг</p>
             </div>
           </div>
@@ -200,7 +207,7 @@ export default function Basket(props: IProps) {
               }}
               className="payment__btn"
             >
-              Оформить заказ
+              {t("checkout_btn")}
             </button>
           </div>
         </div>
