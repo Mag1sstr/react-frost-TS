@@ -22,5 +22,16 @@
   "completion": "Завершение",
   "product_name": "Наименование товара",
   "quantity": "Количество",
-  "price": "Цена"
+  "price": "Цена",
+  "article": "Артикул",
+  "delete": "Удалить из корзины",
+  "payment_method": "Способ оплаты",
+  "total_price": "Итого к оплате",
+  "checkout_btn": "Оформить заказ",
+  "contact_info": "Контактные данные",
+  "surname": "Фамилия",
+  "name": "Имя",
+  "patronymic": "Отчество",
+  "telephone": "Телефон",
+  "confirm_btn": "Подтвердить"
 }
