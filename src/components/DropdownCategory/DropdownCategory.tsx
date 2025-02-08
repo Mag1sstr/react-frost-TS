@@ -14,8 +14,8 @@ interface IItems {
 }
 export default function DropdownCategory(props: IProps) {
   const [dropdown, setDropdown] = useState(false);
-  let [items, setItems] = useState<IItems[] | null>(props.items);
-  let [category, setCategory] = useState<null | string>(null);
+  const [items, setItems] = useState<IItems[] | null>(props.items);
+  const [category, setCategory] = useState<null | string>(null);
 
   useEffect(() => {
     setItems([{ id: "all", name: props.title }, ...props.items]);

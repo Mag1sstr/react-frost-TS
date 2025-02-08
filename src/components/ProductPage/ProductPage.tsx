@@ -12,23 +12,28 @@ export default function ProductPage() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  let [brandId, setBrandId] = useState<number | string | null>(null);
-  let [modelId, setModelId] = useState<number | string | null>(null);
-  let [generationId, setGenerationId] = useState<number | string | null>(null);
-  let [available, setAvailable] = useState(0);
+  const [brandId, setBrandId] = useState<number | string | null>(null);
+  const [modelId, setModelId] = useState<number | string | null>(null);
+  const [generationId, setGenerationId] = useState<number | string | null>(
+    null
+  );
+  const [available, setAvailable] = useState(0);
 
   useEffect(() => {
     let params = `?page=${currentPage}&size=6`;
     if (brandId) {
       params += "&brandId=" + brandId;
     } else {
-      modelId = null;
-      generationId = null;
+      // modelId = null;
+      // generationId = null;
+      setModelId(null);
+      setGenerationId(null);
     }
     if (modelId) {
       params += "&modelId=" + modelId;
     } else {
-      generationId = null;
+      // generationId = null;
+      setGenerationId(null);
     }
     if (generationId) {
       params += "&generationId=" + generationId;
@@ -47,7 +52,7 @@ export default function ProductPage() {
     // console.log(params);
 
     // ВАЖНО: Один вызов axios.get()
-  }, [currentPage, brandId, modelId, generationId, available]);
+  }, [currentPage, brandId, modelId, generationId, available, totalPages]);
 
   function getBrandId(id: number | string) {
     if (id === "all") {

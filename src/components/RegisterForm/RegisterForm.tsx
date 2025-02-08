@@ -8,14 +8,14 @@ interface IProps {
   getClickRegModal: (bool: boolean) => void;
 }
 export default function RegisterForm(props: IProps) {
-  let [registerValue, setRegisterValue] = useState({
+  const [registerValue, setRegisterValue] = useState({
     first_name: "",
     last_name: "",
     email: "",
     password: "",
     repeat_password: "",
   });
-  let [formErrors, setFormErrors] = useState({});
+  const [formErrors, setFormErrors] = useState({});
   // const [emailError, setEmailError] = useState(false);
   const [passRepeatError, setPassRepeatError] = useState(false);
   const [error, setError] = useState(false);
@@ -23,8 +23,8 @@ export default function RegisterForm(props: IProps) {
   // const [lastNameError, setLastNameError] = useState(false);
   // const [passError, setPassError] = useState(false);
 
-  const re =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  // const re =
+  //   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   // console.log(formErrors);
 
@@ -156,7 +156,7 @@ export default function RegisterForm(props: IProps) {
                     console.log(resp);
                   })
                   .catch((err) => {
-                    let errors = err.response.data.errors;
+                    const errors = err.response.data.errors;
 
                     setFormErrors(errors);
 

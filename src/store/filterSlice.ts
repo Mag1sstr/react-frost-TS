@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios, { all } from "axios";
-import { useSelector } from "react-redux";
+import axios from "axios";
 import { AppDispatch } from "./store";
+
 const initialState = {
   brandData: [],
   modelsData: [],

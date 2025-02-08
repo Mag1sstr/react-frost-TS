@@ -7,7 +7,8 @@ interface IProps {
 }
 export default function Pagination(props: IProps) {
   // let [currentPage, setCurrentPage] = useState(props.currentPage);
-  let arr = [];
+  const arr = [];
+
   for (let i = 0; i < props.totalPages; i++) {
     arr.push(i + 1);
   }

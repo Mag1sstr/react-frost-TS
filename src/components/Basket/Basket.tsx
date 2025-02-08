@@ -43,7 +43,9 @@ export default function Basket(props: IProps) {
   //     });
   //   }, []);
   const dispatch: AppDispatch = useDispatch();
-  let { basketPageData, sum } = useSelector((state: RootState) => state.basket);
+  const { basketPageData, sum } = useSelector(
+    (state: RootState) => state.basket
+  );
   const user = useSelector((state: RootState) => state.auth.user);
   useEffect(() => {
     dispatch(getBasketPageData());
@@ -97,7 +99,7 @@ export default function Basket(props: IProps) {
                       <div className="kol">
                         <button
                           onClick={() => {
-                            let minusCount: IBasketPageData[] = [
+                            const minusCount: IBasketPageData[] = [
                               ...basketPageData,
                             ];
                             if (minusCount[index].count <= 1) {
@@ -111,7 +113,7 @@ export default function Basket(props: IProps) {
                                 setSum(
                                   el.count <= 1
                                     ? el.product.price * el.count
-                                    : (sum -= el.product.price)
+                                    : sum - el.product.price
                                 )
                               );
                               axios.get(
@@ -127,7 +129,7 @@ export default function Basket(props: IProps) {
                         <p className="kol__numbers">{el.count}</p>
                         <button
                           onClick={() => {
-                            let plusCount: IBasketPageData[] = [
+                            const plusCount: IBasketPageData[] = [
                               ...basketPageData,
                             ];
                             plusCount[index] = {
@@ -135,7 +137,7 @@ export default function Basket(props: IProps) {
                               count: plusCount[index].count + 1,
                             };
                             dispatch(setBasketPageData(plusCount));
-                            dispatch(setSum((sum += el.product.price)));
+                            dispatch(setSum(sum + el.product.price));
 
                             axios.get(
                               `https://frost.runtime.kz/api/cart/increase?productId=${el.product.id}`
@@ -163,15 +165,15 @@ export default function Basket(props: IProps) {
                           `https://frost.runtime.kz/api/cart/delete?productId=${el.product.id}`
                         );
 
-                        let copyData: IBasketPageData[] = [...basketPageData];
-                        let filteredData = copyData.filter(
+                        const copyData: IBasketPageData[] = [...basketPageData];
+                        const filteredData = copyData.filter(
                           (item: { product: { id: number } }) => {
                             return item.product.id !== el.product.id;
                           }
                         );
                         dispatch(setBasketPageData(filteredData));
 
-                        dispatch(setSum((sum -= el.product.price * el.count)));
+                        dispatch(setSum(sum - el.product.price * el.count));
                       }}
                       // href="#!"
                       className="delete__link"

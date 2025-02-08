@@ -43,7 +43,7 @@ export default function PersonalMyOrders() {
       <div className="history__product-wrapper">
         {ordersData.map((el: IOrdersData) => {
           let sumPrice = 0;
-          for (let i of el.items) {
+          for (const i of el.items) {
             sumPrice += i.product.price * i.count;
           }
           return (

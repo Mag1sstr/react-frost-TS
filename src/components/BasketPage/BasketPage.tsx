@@ -28,14 +28,14 @@ export interface IDeliveryValue {
   apartment: string;
 }
 export default function BasketPage() {
-  let [mainStage, setMainStage] = useState(0);
-  let [currentStage, setCurrentStage] = useState(1);
+  const [mainStage, setMainStage] = useState(0);
+  const [currentStage, setCurrentStage] = useState(1);
 
   const { t } = useTranslation();
 
   const user: IUser | null = useSelector((state: RootState) => state.auth.user);
 
-  let [inputValue, setInputValue] = useState<IInputValue>({
+  const [inputValue, setInputValue] = useState<IInputValue>({
     name: user ? user.firstName : "",
     surname: user ? user.lastName : "",
     patronymic: "",
@@ -43,7 +43,7 @@ export default function BasketPage() {
     email: user ? user.email : "",
   });
 
-  let [inputDeliveryValue, setInputDeliveryValue] = useState({
+  const [inputDeliveryValue, setInputDeliveryValue] = useState({
     region: "",
     city: "",
     street: "",

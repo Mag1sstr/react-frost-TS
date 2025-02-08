@@ -31,7 +31,7 @@ export function getBasketPageData() {
     axios.get("https://frost.runtime.kz/api/cart").then((resp) => {
       dispatch(setBasketPageData(resp.data.items));
       let sumPrice = 0;
-      for (let el of resp.data.items) {
+      for (const el of resp.data.items) {
         sumPrice += el.product.price * el.count;
       }
       dispatch(setSum(sumPrice));

@@ -2,16 +2,14 @@ import "./Header.css";
 import logo from "../../images/logo.png";
 import inputSearch from "../../images/input-search.svg";
 import basket from "../../images/basket.svg";
-import ellips from "../../images/ellips.svg";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import LoginForm from "../LoginForm/LoginForm";
 import { deleteUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { useTranslation } from "react-i18next";
-import { getBasketPageData } from "../../store/basketSlice";
 
 export default function Header() {
   const user = useSelector((state: RootState) => state.auth.user);

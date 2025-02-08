@@ -53,14 +53,14 @@ export default function BuyInfo() {
 
   const params = useParams();
 
-  let [textValue, setTextValue] = useState("");
+  const [textValue, setTextValue] = useState("");
   const [reviewsError, setReviewsError] = useState(false);
 
   useEffect(() => {
     axios
       .get(`https://frost.runtime.kz/api/products/${params.id}`)
       .then((resp) => {
-        let data = resp.data;
+        const data = resp.data;
         setBuyinfoData(data);
       });
   }, [params]);
@@ -68,7 +68,7 @@ export default function BuyInfo() {
     axios
       .get(`https://frost.runtime.kz/api/reviews?productId=${params.id}`)
       .then((resp) => {
-        let data = resp.data;
+        const data = resp.data;
         setReviews(data);
       });
   }, [params]);
@@ -90,13 +90,6 @@ export default function BuyInfo() {
     user: {
       firstName: string;
       lastName: string;
-    };
-  }
-
-  console.log(reviews);
-  interface ResponseApi {
-    data: {
-      review: string;
     };
   }
 
@@ -210,7 +203,7 @@ export default function BuyInfo() {
                             .then((resp) => {
                               console.log(resp.data);
 
-                              let copyReviews = [...reviews];
+                              const copyReviews = [...reviews];
                               copyReviews.unshift(resp.data);
                               setReviews(copyReviews);
                               window.location.reload();

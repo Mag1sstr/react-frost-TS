@@ -15,7 +15,7 @@ interface IProps {
   id: number;
 }
 export default function BuyButtonForm(props: IProps) {
-  let [count, setCount] = useState(1);
+  const [count, setCount] = useState(1);
   const [availableError, setAvailableError] = useState(false);
   const [userError, setUserError] = useState(false);
 
@@ -24,10 +24,10 @@ export default function BuyButtonForm(props: IProps) {
 
   document.onkeydown = (e) => {
     if (e.key == "ArrowLeft") {
-      count <= 1 ? null : setCount((count -= 1));
+      count <= 1 ? null : setCount(count - 1);
     }
     if (e.key == "ArrowRight") {
-      setCount((count += 1));
+      setCount(count + 1);
     }
   };
   return (
@@ -54,7 +54,7 @@ export default function BuyButtonForm(props: IProps) {
           <div className="addBasket__count-block">
             <button
               onClick={() => {
-                count <= 1 ? null : setCount((count -= 1));
+                count <= 1 ? null : setCount(count - 1);
               }}
               className="addBasket__block-btn"
             >
@@ -62,7 +62,7 @@ export default function BuyButtonForm(props: IProps) {
             </button>
             <p className="addBasket__block-count">{count}</p>
             <button
-              onClick={() => setCount((count += 1))}
+              onClick={() => setCount(count + 1)}
               className="addBasket__block-btn"
             >
               +
