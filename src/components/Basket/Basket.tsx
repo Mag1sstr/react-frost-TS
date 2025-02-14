@@ -102,18 +102,16 @@ export default function Basket(props: IProps) {
                             const minusCount: IBasketPageData[] = [
                               ...basketPageData,
                             ];
-                            if (minusCount[index].count <= 1) {
-                              null;
-                            } else {
+                            if (minusCount[index].count > 1) {
                               minusCount[index] = {
                                 ...minusCount[index],
                                 count: minusCount[index].count - 1,
                               };
                               dispatch(
                                 setSum(
-                                  el.count <= 1
-                                    ? el.product.price * el.count
-                                    : sum - el.product.price
+                                  el.count > 1
+                                    ? sum - el.product.price
+                                    : el.product.price * el.count
                                 )
                               );
                               axios.get(
