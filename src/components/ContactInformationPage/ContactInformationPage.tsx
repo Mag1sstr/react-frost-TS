@@ -18,7 +18,7 @@ export default function ContactInformationPage(props: IProps) {
   const [emailError, setEmailError] = useState("");
   const { t } = useTranslation();
   const re =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
   const convertPhoneNumber = (inp: string) => {
     if (isValidPhoneNumber(inp, "RU")) {
@@ -150,7 +150,6 @@ export default function ContactInformationPage(props: IProps) {
                   props.setCurrentStage(3);
                 } else {
                   setError(!error);
-                  null;
                 }
               }}
               className="payment__btn"
