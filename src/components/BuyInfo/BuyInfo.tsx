@@ -41,12 +41,12 @@ export default function BuyInfo() {
 
   const [clickBuyBtn, setClickBuyBtn] = useState(false);
 
-  const [cardImages, setCardImages] = useState([
+  const cardImages = [
     BuyInfoImage1,
     BuyInfoImage3,
     BuyInfoImage4,
     BuyInfoImage5,
-  ]);
+  ];
   const [mainCardImage, setMainCardImage] = useState(0);
 
   const user = useSelector((state: RootState) => state.auth.user);
