@@ -8,3 +8,8 @@ export interface IBasketPageData {
     id: number;
   };
 }
+
+export interface IErrors {
+  email?: string;
+  password?: string;
+}

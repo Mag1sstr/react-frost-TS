@@ -2,6 +2,7 @@ import axios from "axios";
 import "./RegisterForm.css";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { IErrors } from "../../interfaces/interfaces";
 
 interface IProps {
   style: string | null;
@@ -15,7 +16,7 @@ export default function RegisterForm(props: IProps) {
     password: "",
     repeat_password: "",
   });
-  const [formErrors, setFormErrors] = useState({});
+  const [formErrors, setFormErrors] = useState({} as IErrors);
   // const [emailError, setEmailError] = useState(false);
   const [passRepeatError, setPassRepeatError] = useState(false);
   const [error, setError] = useState(false);
@@ -76,9 +77,9 @@ export default function RegisterForm(props: IProps) {
             />
           </div>
 
-          {/* {formErrors.email ? (
+          {formErrors.email ? (
             <div style={{ color: "red" }}>{formErrors.email}</div>
-          ) : null} */}
+          ) : null}
           <input
             value={registerValue.email}
             onChange={(e) => {
@@ -100,9 +101,9 @@ export default function RegisterForm(props: IProps) {
             <div style={{ color: "red" }}>Повторите пароль</div>
           ) : null}
 
-          {/* {formErrors.password ? (
+          {formErrors.password ? (
             <div style={{ color: "red" }}>{formErrors.password}</div>
-          ) : null} */}
+          ) : null}
 
           <input
             value={registerValue.password}
@@ -136,10 +137,10 @@ export default function RegisterForm(props: IProps) {
                 return setPassRepeatError(!passRepeatError);
               }
               if (
-                registerValue.first_name.length == 0 &&
-                registerValue.last_name.length == 0 &&
-                registerValue.email.length == 0 &&
-                registerValue.password.length == 0 &&
+                registerValue.first_name.length == 0 ||
+                registerValue.last_name.length == 0 ||
+                registerValue.email.length == 0 ||
+                registerValue.password.length == 0 ||
                 registerValue.repeat_password.length == 0
               ) {
                 toast.error("Неверные данные");
@@ -154,23 +155,15 @@ export default function RegisterForm(props: IProps) {
                   })
                   .then((resp) => {
                     console.log(resp);
+                    toast.success("Вы успешно зарегистрировались");
+                    setTimeout(() => {
+                      props.getClickRegModal(false);
+                    }, 1500);
                   })
                   .catch((err) => {
                     const errors = err.response.data.errors;
-
                     setFormErrors(errors);
-
-                    // console.log(errors);
-
-                    // setEmailError(errors.email);
-                    // setNameError(errors.first_name);
-                    // setLastNameError(errors.last_name);
-                    // setPassError(errors.password);
                   });
-                toast.success("Вы успешно зарегистрировались");
-                setTimeout(() => {
-                  props.getClickRegModal(false);
-                }, 1500);
               }
             }}
             className="register__form-btn"
