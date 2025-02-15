@@ -53,13 +53,15 @@ export default function Header() {
             <img src="images/adaptive/search.png" alt="" />
             <img src="images/adaptive/basket.png" alt="" />
           </div>
-          <div className="header__city">
-            <p>{t("astana")}</p>
-            <p>{t("almaty")}</p>
-          </div>
-          <div className="header__numbers">
-            <p>+7 777 777 77 77</p>
-            <p>+7 777 777 77 77</p>
+          <div className="header__contacts">
+            <div className="header__city">
+              <p>{t("astana")}</p>
+              <p>{t("almaty")}</p>
+            </div>
+            <div className="header__numbers">
+              <p>+7 777 777 77 77</p>
+              <p>+7 777 777 77 77</p>
+            </div>
           </div>
           <div className="header__input">
             <input

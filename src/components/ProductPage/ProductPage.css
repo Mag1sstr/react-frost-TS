@@ -8,17 +8,23 @@
   padding: 0 10px;
   margin: 0 auto;
 }
-.product__row {
+/* .product__row {
   display: flex;
   justify-content: space-between;
   gap: 45px;
   flex-wrap: wrap;
   color: #000;
   margin-bottom: 30px;
+} */
+.product__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  gap: 45px;
+  margin-bottom: 30px;
 }
 
-.product__row:after {
+/* .product__row:after {
   content: "";
   flex: auto;
   justify-content: flex-start;
-}
+} */
