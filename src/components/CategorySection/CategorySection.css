@@ -15,7 +15,8 @@
   line-height: 24.51px;
 }
 .category__block {
-  width: 750px;
+  max-width: 750px;
+  /* width: 750px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -33,4 +34,3 @@
   border: 2px solid #e5e5e5;
   background: #f6f6f6;
 } */
-
