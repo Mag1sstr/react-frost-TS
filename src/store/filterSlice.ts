@@ -6,9 +6,9 @@ const initialState = {
   brandData: [],
   modelsData: [],
   generationsData: [],
-  brandId: "all",
-  modelId: "all",
-  generationId: "all",
+  // brandId: "all",
+  // modelId: "all",
+  // generationId: "all",
 };
 export const filterSlice = createSlice({
   name: "filterSlice",
@@ -25,15 +25,15 @@ export const filterSlice = createSlice({
     setGenerationData(state, action) {
       state.generationsData = action.payload;
     },
-    brandChange(state, action) {
-      state.brandId = action.payload;
-    },
-    modelChange(state, action) {
-      state.modelId = action.payload;
-    },
-    generationChange(state, action) {
-      state.generationId = action.payload;
-    },
+    // brandChange(state, action) {
+    //   state.brandId = action.payload;
+    // },
+    // modelChange(state, action) {
+    //   state.modelId = action.payload;
+    // },
+    // generationChange(state, action) {
+    //   state.generationId = action.payload;
+    // },
   },
 });
 
